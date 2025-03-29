@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".danhbadonvi">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbdanhbadonvi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#73A03F"
+        app:title="Danh bạ đơn vị"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+    <EditText
+        android:id="@+id/edttimkiemdonvi"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/khungbo"
+        android:backgroundTint="@color/white"
+        android:drawableStart="@drawable/search"
+        android:hint="Tìm kiếm"
+        android:paddingStart="16dp"
+        android:singleLine="true"
+        android:imeOptions="actionSearch" />
+
+    <ImageView
+        android:id="@+id/imgadddonvi"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="right"
+        app:srcCompat="@drawable/addlienhe" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rcvdonvi"/>
+    </LinearLayout>
+
+
+</LinearLayout>

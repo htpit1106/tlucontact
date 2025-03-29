@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Suacbnv">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tbsuacbnv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#73A03F"
+            app:title="Sử thông tin cbnv"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
+
+        <ImageView
+            android:id="@+id/imgavatar1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/circleshape"
+            android:clipToOutline="true"
+            android:padding="2dp"
+            android:scaleType="centerCrop"
+            android:src="@color/black"
+            app:shapeAppearanceOverlay="@style/RoundedImage"
+            tools:srcCompat="@tools:sample/avatars" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Chọn ảnh"
+            android:textColor="#4CAF50"/>
+
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edtten1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Tên" />
+
+    <EditText
+        android:id="@+id/edtsdtupdate1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Số điện thoại" />
+
+    <EditText
+        android:id="@+id/edtemaiupdate1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Email" />
+
+    <EditText
+        android:id="@+id/edtchucvupdate1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Chức vụ" />
+
+    <EditText
+        android:id="@+id/edtthongtin1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Thông tin thêm" />
+
+    <Button
+        android:id="@+id/btnsua1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lưu"
+        android:backgroundTint="#FF9800"/>
+
+
+</LinearLayout>

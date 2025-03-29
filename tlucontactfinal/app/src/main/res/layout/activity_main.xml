@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbtrangchu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#73A03F"
+        app:title="Trang chủ"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <Button
+        android:id="@+id/btndbdonvi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15sp"
+        android:layout_marginRight="10dp"
+        android:backgroundTint="#76C5BE"
+        android:text="Danh bạ đơn vị"
+        android:textColor="#D33D70"
+        android:textSize="20dp"
+        app:cornerRadius="4dp" />
+
+    <Button
+        android:id="@+id/btndbcbnv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:backgroundTint="#76C5BE"
+        android:text="Danh bạ CBNV"
+        android:textColor="#D33D70"
+        android:textSize="20dp"
+        app:cornerRadius="4dp" />
+
+</LinearLayout>
