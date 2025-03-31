@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Danhbacbnv">
+    android:padding="16dp"
+
+    tools:context=".Userui.Danhbacbnv">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tbdanhbacbnv"

@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -17,31 +21,13 @@
         android:theme="@style/Theme.Tlucontactfinal"
         tools:targetApi="31">
         <activity
-            android:name=".Themdonvi"
+            android:name=".AdminActivity"
             android:exported="false" />
         <activity
-            android:name=".Themcbnv"
+            android:name=".SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".Suadonvi"
-            android:exported="false" />
-        <activity
-            android:name=".ChitietDonvi"
-            android:exported="false" />
-        <activity
-            android:name=".Suacbnv"
-            android:exported="false" />
-        <activity
-            android:name=".Chitietcbnv"
-            android:exported="false" />
-        <activity
-            android:name=".Danhbacbnv"
-            android:exported="false" />
-        <activity
-            android:name=".danhbadonvi"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -49,6 +35,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Userui.Themdonvi"
+            android:exported="false" />
+        <activity
+            android:name=".Userui.Themcbnv"
+            android:exported="false" />
+        <activity
+            android:name=".Userui.Suadonvi"
+            android:exported="false" />
+        <activity
+            android:name=".Userui.ChitietDonvi"
+            android:exported="false" />
+        <activity
+            android:name=".Userui.Suacbnv"
+            android:exported="false" />
+        <activity
+            android:name=".Userui.Chitietcbnv"
+            android:exported="false" />
+        <activity
+            android:name=".Userui.Danhbacbnv"
+            android:exported="false" />
+        <activity
+            android:name=".Userui.danhbadonvi"
+            android:exported="false" />
+        <activity
+            android:name=".Userui.MainActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>

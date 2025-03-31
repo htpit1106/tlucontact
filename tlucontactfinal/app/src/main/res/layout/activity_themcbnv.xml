@@ -6,11 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Themcbnv">
+    tools:context=".Userui.Themcbnv">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:padding="16dp"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar

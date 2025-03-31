@@ -8,35 +8,26 @@
     android:orientation="vertical"
     android:padding="16dp"
 
-    tools:context=".Userui.MainActivity">
-
+    tools:context=".AdminActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tbtrangchu"
+        android:id="@+id/tbadmin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#73A03F"
-        app:title="Trang chủ"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
+        android:theme="?attr/actionBarTheme"
 
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="TLUCONTACT"
-        android:textColor="#3F51B5"
-        android:textSize="30dp" />
+        app:title="Admin" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/listdanhba" />
 
     <Button
-        android:id="@+id/btndbdonvi"
+        android:id="@+id/btndbdonviad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -49,7 +40,7 @@
         app:cornerRadius="4dp" />
 
     <Button
-        android:id="@+id/btndbcbnv"
+        android:id="@+id/btndbcbnvad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -59,5 +50,4 @@
         android:textColor="#D33D70"
         android:textSize="20dp"
         app:cornerRadius="4dp" />
-
 </LinearLayout>

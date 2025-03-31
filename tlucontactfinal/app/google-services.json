@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "336861926673",
+    "project_id": "tlucontacthtpit2004",
+    "storage_bucket": "tlucontacthtpit2004.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:336861926673:android:ca0fd88a106131a572a8b0",
+        "android_client_info": {
+          "package_name": "com.example.tlucontactfinal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfRrny-myyG0aAzBXUzXa-qbc_Nz_Vbqs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

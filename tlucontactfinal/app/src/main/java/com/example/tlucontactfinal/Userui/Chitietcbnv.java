@@ -1,8 +1,9 @@
-package com.example.tlucontactfinal;
+package com.example.tlucontactfinal.Userui;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,11 +12,10 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.bumptech.glide.Glide;
+import com.example.tlucontactfinal.DatabaseHelper;
+import com.example.tlucontactfinal.R;
 import com.example.tlucontactfinal.model.cbnv;
 
 public class Chitietcbnv extends AppCompatActivity {
@@ -33,6 +33,16 @@ public class Chitietcbnv extends AppCompatActivity {
         Actionbar();
         Intent intent = getIntent();
         cbnv cbnv = (cbnv) intent.getSerializableExtra("cbnv");
+        String userrole = intent.getStringExtra("userrole");
+        if (userrole.equals("admin")) {
+            btnsua.setVisibility(View.VISIBLE);
+            btnxoa.setVisibility(View.VISIBLE);
+        }
+        else {
+            btnsua.setVisibility(View.GONE);
+            btnxoa.setVisibility(View.GONE);
+        }
+
 
         Glide.with(this)
                 .load(Uri.parse(cbnv.getAvatar())) // Load đường dẫn từ database

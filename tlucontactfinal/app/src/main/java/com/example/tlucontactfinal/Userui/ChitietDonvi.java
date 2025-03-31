@@ -1,4 +1,4 @@
-package com.example.tlucontactfinal;
+package com.example.tlucontactfinal.Userui;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -6,15 +6,15 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.bumptech.glide.Glide;
+import com.example.tlucontactfinal.DatabaseHelper;
+import com.example.tlucontactfinal.R;
 import com.example.tlucontactfinal.model.donvi;
 
 public class ChitietDonvi extends AppCompatActivity {
@@ -23,6 +23,7 @@ public class ChitietDonvi extends AppCompatActivity {
     TextView txtname, txtsdt, txtcall, txtinbox, txtemaildetail, txtthongtindetail;
     Button btnsua, btnxoa;
     Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,16 @@ public class ChitietDonvi extends AppCompatActivity {
         Actionbar();
         Intent intent = getIntent();
         donvi donvi = (donvi) intent.getSerializableExtra("donvi");
+        String user = intent.getStringExtra("userrole");
+
+        if (user.equals("admin")) {
+            btnsua.setVisibility(View.VISIBLE);
+            btnxoa.setVisibility(View.VISIBLE);
+        }else{
+            btnsua.setVisibility(View.GONE);
+            btnxoa.setVisibility(View.GONE);
+        }
+
 
         Glide.with(this)
                 .load(Uri.parse(donvi.getAvatar())) // Load đường dẫn từ database
@@ -47,6 +58,7 @@ public class ChitietDonvi extends AppCompatActivity {
         btnsua.setOnClickListener(view -> {
             Intent intent1 = new Intent(ChitietDonvi.this, Suadonvi.class);
             intent1.putExtra("donvi", donvi);
+
             startActivity(intent1);
 
 

@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Suacbnv">
+    android:padding="16dp"
+    tools:context=".Userui.Suacbnv">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#73A03F"
-            app:title="Sử thông tin cbnv"
+            app:title="Sửa thông tin cbnv"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme" />
 
