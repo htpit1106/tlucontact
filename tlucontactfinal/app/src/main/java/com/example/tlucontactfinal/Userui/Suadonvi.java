@@ -24,6 +24,8 @@ public class Suadonvi extends AppCompatActivity {
     private Uri imageUri;
     Toolbar toolbar;
 
+    String userrole = "admin";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +73,7 @@ public class Suadonvi extends AppCompatActivity {
 
             helper.updateDonvi(dv.getId(), dv1);
             Intent intent1 = new Intent(Suadonvi.this, danhbadonvi.class);
-            intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent1.putExtra("user", userrole);
             startActivity(intent1);
             finish();
 

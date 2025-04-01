@@ -25,6 +25,8 @@ public class Themdonvi extends AppCompatActivity {
     private Uri imageUri;
     Toolbar toolbar;
 
+    String userrole = "admin";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +61,7 @@ public class Themdonvi extends AppCompatActivity {
             donvi dv = new donvi( ten, sdt, email, avatar, thongtin);
             helper.insertDonvi(dv);
             Intent intent1 = new Intent(Themdonvi.this, Danhbacbnv.class);
-            intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent1.putExtra("user", userrole);
             startActivity(intent1);
             finish();
         });

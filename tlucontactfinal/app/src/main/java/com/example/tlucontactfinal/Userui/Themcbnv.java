@@ -25,6 +25,7 @@ public class Themcbnv extends AppCompatActivity {
     private Uri imageUri;
     Toolbar toolbar;
 
+    String userrole;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +59,7 @@ public class Themcbnv extends AppCompatActivity {
             cbnv cbnv1 = new cbnv( ten, sdt, email, chucvu,avatar, thongtin);
             helper.insertCbnv(cbnv1);
             Intent intent1 = new Intent(Themcbnv.this, Danhbacbnv.class);
-            intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent1.putExtra("user", userrole);
             startActivity(intent1);
             finish();
         });

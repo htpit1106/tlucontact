@@ -23,6 +23,7 @@ public class Suacbnv extends AppCompatActivity {
     DatabaseHelper helper;
     private Uri imageUri;
     Toolbar toolbar;
+    String userrole = "adminn";
 
 
 
@@ -72,6 +73,7 @@ public class Suacbnv extends AppCompatActivity {
             helper.updateCbnv(cbnv.getId(), cbnv1);
             Intent intent1 = new Intent(Suacbnv.this, Danhbacbnv.class);
             intent1.putExtra("cbnv", cbnv1);
+            intent1.putExtra("user", userrole);
             intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent1);
             finish();

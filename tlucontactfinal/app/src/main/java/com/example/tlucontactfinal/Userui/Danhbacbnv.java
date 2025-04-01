@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,6 +45,7 @@ public class Danhbacbnv extends AppCompatActivity implements adapterCbnv.OnItemC
         if (user == null){
             user = "user";
         }
+        Toast.makeText(this, user, Toast.LENGTH_SHORT).show();
         if (user.equals("admin")) {
             imgaddcbnv.setVisibility(View.VISIBLE);
         } else {
