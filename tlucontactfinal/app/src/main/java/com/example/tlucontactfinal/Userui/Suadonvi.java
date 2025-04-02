@@ -91,9 +91,8 @@ public class Suadonvi extends AppCompatActivity {
         if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
             Uri cachedUri = data.getData();
             imageUri = copyImageToInternalStorage(this, cachedUri);
-
             Glide.with(imgavatar.getContext())
-                    .load(new File(imageUri.getPath())) // Chuyển String thành Uri
+                    .load(imageUri) // Chuyển String thành Uri
                     .circleCrop()
                     .placeholder(R.drawable.inbox) // Ảnh mặc định nếu đang load
                     .error(R.drawable.inbox) // Ảnh mặc định nếu load thất bại

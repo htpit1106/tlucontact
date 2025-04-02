@@ -52,6 +52,8 @@ public class Danhbacbnv extends AppCompatActivity implements adapterCbnv.OnItemC
             imgaddcbnv.setVisibility(View.GONE);
         }
 
+
+
         adapter.setOnItemClick(this);
         edtsearch.addTextChangedListener(new TextWatcher() {
             @Override
