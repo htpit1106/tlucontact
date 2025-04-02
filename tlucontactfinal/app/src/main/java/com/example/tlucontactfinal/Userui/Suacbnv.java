@@ -1,5 +1,8 @@
 package com.example.tlucontactfinal.Userui;
 
+
+import static com.example.tlucontactfinal.Userui.Themcbnv.copyImageToInternalStorage;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,6 +18,8 @@ import com.bumptech.glide.Glide;
 import com.example.tlucontactfinal.DatabaseHelper;
 import com.example.tlucontactfinal.R;
 import com.example.tlucontactfinal.model.cbnv;
+
+import java.io.File;
 
 public class Suacbnv extends AppCompatActivity {
     ImageView imgavatar;
@@ -71,11 +76,7 @@ public class Suacbnv extends AppCompatActivity {
             String avatar = imageUri.toString();
             cbnv cbnv1 = new cbnv(cbnv.getId(), ten, sdt, email, chucvu,avatar, thongtin);
             helper.updateCbnv(cbnv.getId(), cbnv1);
-            Intent intent1 = new Intent(Suacbnv.this, Danhbacbnv.class);
-            intent1.putExtra("cbnv", cbnv1);
-            intent1.putExtra("user", userrole);
-            intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent1);
+
             finish();
 
 
@@ -89,14 +90,17 @@ public class Suacbnv extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
-             imageUri = data.getData(); // Lấy URI của ảnh
+            Uri cachedUri = data.getData();
+            imageUri = copyImageToInternalStorage(this, cachedUri);
             Glide.with(imgavatar.getContext())
-                    .load(Uri.parse(imageUri.toString())) // Chuyển String thành Uri
+                    .load(new File(imageUri.getPath())) // Chuyển String thành Uri
                     .circleCrop()
                     .placeholder(R.drawable.inbox) // Ảnh mặc định nếu đang load
                     .error(R.drawable.inbox) // Ảnh mặc định nếu load thất bại
                     .into(imgavatar);        }
     }
+
+
 
     private void Actionbar() {
         setSupportActionBar(toolbar);

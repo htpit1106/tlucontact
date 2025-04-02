@@ -90,17 +90,16 @@ public class adapterCbnv extends  RecyclerView.Adapter<adapterCbnv.ViewHolder>{
 
         public void bind(cbnv cb) {
 
-
             String avatarUri = cb.getAvatar();
-            if (avatarUri != null && !avatarUri.isEmpty()) {
+            Uri imageUri = Uri.parse(avatarUri);
+
+            if (imageUri != null) {
                 Glide.with(imgavtar.getContext())
-                        .load(Uri.parse(avatarUri)) // Chuyển String thành Uri
-                        .circleCrop()
-                        .placeholder(R.drawable.inbox) // Ảnh mặc định nếu đang load
-                        .error(R.drawable.inbox) // Ảnh mặc định nếu load thất bại
-                        .into(imgavtar);
-            } else {
-                imgavtar.setImageResource(R.drawable.inbox);
+                        .load(imageUri) // Load đường dẫn từ database
+                        .circleCrop() // Bo tròn ảnh
+                        .placeholder(R.drawable.inbox) // Ảnh mặc định nếu chưa có ảnh
+                        .into(imgavtar); // ImageView hiển thị ảnh
+
             }
 
             txtname.setText(cb.getTencb());

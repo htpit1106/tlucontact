@@ -1,11 +1,13 @@
 package com.example.tlucontactfinal.Userui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +18,12 @@ import com.example.tlucontactfinal.DatabaseHelper;
 import com.example.tlucontactfinal.R;
 import com.example.tlucontactfinal.model.cbnv;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 public class Themcbnv extends AppCompatActivity {
 
     ImageView imgavatar;
@@ -25,7 +33,7 @@ public class Themcbnv extends AppCompatActivity {
     private Uri imageUri;
     Toolbar toolbar;
 
-    String userrole;
+    String userrole = "admin";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +66,7 @@ public class Themcbnv extends AppCompatActivity {
 
             cbnv cbnv1 = new cbnv( ten, sdt, email, chucvu,avatar, thongtin);
             helper.insertCbnv(cbnv1);
-            Intent intent1 = new Intent(Themcbnv.this, Danhbacbnv.class);
-            intent1.putExtra("user", userrole);
-            startActivity(intent1);
+
             finish();
         });
 
@@ -70,15 +76,24 @@ public class Themcbnv extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+
+
         if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
-            imageUri = data.getData(); // Lấy URI của ảnh
+
+            Uri cachedUri = data.getData();
+            imageUri = copyImageToInternalStorage(this, cachedUri);
+
             Glide.with(imgavatar.getContext())
-                    .load(Uri.parse(imageUri.toString())) // Chuyển String thành Uri
+                    .load(new File (imageUri.getPath())) // Chuyển String thành Uri
                     .circleCrop()
                     .placeholder(R.drawable.inbox) // Ảnh mặc định nếu đang load
                     .error(R.drawable.inbox) // Ảnh mặc định nếu load thất bại
                     .into(imgavatar);        }
     }
+
+
+
 
     private void anhxa() {
         toolbar = findViewById(R.id.tbaddcbnv);
@@ -91,6 +106,39 @@ public class Themcbnv extends AppCompatActivity {
         btnadd = findViewById(R.id.btnThem4);
         helper = new DatabaseHelper(this);
 
+    }
+
+    public static Uri copyImageToInternalStorage(Context context, Uri uri) {
+        try {
+            InputStream inputStream = context.getContentResolver().openInputStream(uri);
+            if (inputStream == null) {
+                Toast.makeText(context, "Không thể mở InputStream", Toast.LENGTH_SHORT).show();
+                return null;
+            }
+
+            // Tạo một file với tên duy nhất để tránh ghi đè
+            File imageDir = new File(context.getFilesDir(), "images");
+            if (!imageDir.exists()) {
+                imageDir.mkdir();
+            }
+            File tempFile = new File(imageDir, "image_" + System.currentTimeMillis() + ".jpg");
+
+            OutputStream outputStream = new FileOutputStream(tempFile);
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = inputStream.read(buffer)) > 0) {
+                outputStream.write(buffer, 0, length);
+            }
+            outputStream.close();
+            inputStream.close();
+
+            Uri fileUri = Uri.fromFile(tempFile);
+            return fileUri;
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(context, "Lỗi khi sao chép ảnh", Toast.LENGTH_SHORT).show();
+            return null;
+        }
     }
 
 

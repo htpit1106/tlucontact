@@ -1,5 +1,9 @@
 package com.example.tlucontactfinal.Userui;
 
+
+
+import static com.example.tlucontactfinal.Userui.Themcbnv.copyImageToInternalStorage;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,6 +19,8 @@ import com.bumptech.glide.Glide;
 import com.example.tlucontactfinal.DatabaseHelper;
 import com.example.tlucontactfinal.R;
 import com.example.tlucontactfinal.model.donvi;
+
+import java.io.File;
 
 public class Suadonvi extends AppCompatActivity {
     ImageView imgavatar;
@@ -72,9 +78,7 @@ public class Suadonvi extends AppCompatActivity {
             donvi dv1 = new donvi(dv.getId(), ten, sdt, email,avatar, thongtin);
 
             helper.updateDonvi(dv.getId(), dv1);
-            Intent intent1 = new Intent(Suadonvi.this, danhbadonvi.class);
-            intent1.putExtra("user", userrole);
-            startActivity(intent1);
+
             finish();
 
 
@@ -85,9 +89,11 @@ public class Suadonvi extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
-            imageUri = data.getData(); // Lấy URI của ảnh
+            Uri cachedUri = data.getData();
+            imageUri = copyImageToInternalStorage(this, cachedUri);
+
             Glide.with(imgavatar.getContext())
-                    .load(Uri.parse(imageUri.toString())) // Chuyển String thành Uri
+                    .load(new File(imageUri.getPath())) // Chuyển String thành Uri
                     .circleCrop()
                     .placeholder(R.drawable.inbox) // Ảnh mặc định nếu đang load
                     .error(R.drawable.inbox) // Ảnh mặc định nếu load thất bại

@@ -1,5 +1,6 @@
 package com.example.tlucontactfinal.Userui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,6 +18,12 @@ import com.bumptech.glide.Glide;
 import com.example.tlucontactfinal.DatabaseHelper;
 import com.example.tlucontactfinal.R;
 import com.example.tlucontactfinal.model.cbnv;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 public class Chitietcbnv extends AppCompatActivity {
     DatabaseHelper helper;
@@ -43,12 +50,18 @@ public class Chitietcbnv extends AppCompatActivity {
             btnxoa.setVisibility(View.GONE);
         }
 
+        String avatarUri = cbnv.getAvatar();
+        Uri imageUri = Uri.parse(avatarUri);
 
-        Glide.with(this)
-                .load(Uri.parse(cbnv.getAvatar())) // Load đường dẫn từ database
-                .circleCrop() // Bo tròn ảnh
-                .placeholder(R.drawable.inbox) // Ảnh mặc định nếu chưa có ảnh
-                .into(imgavatar); // ImageView hiển thị ảnh
+        if (imageUri != null) {
+            Glide.with(this)
+                    .load(imageUri) // Load đường dẫn từ database
+                    .circleCrop() // Bo tròn ảnh
+                    .placeholder(R.drawable.inbox) // Ảnh mặc định nếu chưa có ảnh
+                    .into(imgavatar); // ImageView hiển thị ảnh
+
+        }
+
 
         txtname.setText(cbnv.getTencb());
         txtsdt.setText(cbnv.getSdt());
@@ -62,14 +75,13 @@ public class Chitietcbnv extends AppCompatActivity {
             Intent intent1 = new Intent(Chitietcbnv.this, Suacbnv.class);
             intent1.putExtra("cbnv", cbnv);
             startActivity(intent1);
+            finish();
 
         });
 
         btnxoa.setOnClickListener(view -> {
             if (helper.deleteCbnv(cbnv.getId())){
-                Intent intent1 = new Intent(Chitietcbnv.this, Danhbacbnv.class);
-                intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent1);
+
                 finish();
                 } else {
                 Toast.makeText(this, "Xóa thất bại", Toast.LENGTH_SHORT).show();
@@ -93,11 +105,20 @@ public class Chitietcbnv extends AppCompatActivity {
 
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
     private void Actionbar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(v -> finish());
     }
+
+
 
     private void anhxa() {
         toolbar = findViewById(R.id.tbcbnvdetail);

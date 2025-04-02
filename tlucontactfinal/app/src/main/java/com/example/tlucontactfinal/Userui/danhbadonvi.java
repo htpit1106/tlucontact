@@ -80,6 +80,18 @@ public class danhbadonvi extends AppCompatActivity implements adapterDonvi.OnIte
         });
 
     }
+
+    protected void onResume() {
+        super.onResume();
+        loadDanhBa();  // Gọi lại hàm load danh bạ
+    }
+
+    private void loadDanhBa() {
+        listdonvi = helper.getAllDonvi();
+        adapter.updateList(listdonvi);
+        adapter.notifyDataSetChanged();
+    }
+
     private void Actionbar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

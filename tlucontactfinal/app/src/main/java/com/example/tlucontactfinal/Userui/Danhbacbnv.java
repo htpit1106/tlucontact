@@ -80,6 +80,19 @@ public class Danhbacbnv extends AppCompatActivity implements adapterCbnv.OnItemC
         });
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadDanhBa();  // Gọi lại hàm load danh bạ
+    }
+
+    private void loadDanhBa() {
+        listcbnv = helper.getAllCbnv();
+        adapter.updateList(listcbnv);
+        adapter.notifyDataSetChanged();
+    }
+
     private void filterList(String query) {
 
         if (query.isEmpty()) {
@@ -115,6 +128,7 @@ public class Danhbacbnv extends AppCompatActivity implements adapterCbnv.OnItemC
         listcbnv = helper.getAllCbnv();
         adapter = new adapterCbnv(listcbnv);
         recyclerView.setAdapter(adapter);
+
 
     }
 

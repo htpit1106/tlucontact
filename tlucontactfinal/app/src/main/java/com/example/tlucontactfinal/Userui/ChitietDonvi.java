@@ -45,8 +45,11 @@ public class ChitietDonvi extends AppCompatActivity {
         }
 
 
+
+
+
         Glide.with(this)
-                .load(Uri.parse(donvi.getAvatar())) // Load đường dẫn từ database
+                .load(donvi.getAvatar()) // Load đường dẫn từ database
                 .circleCrop() // Bo tròn ảnh
                 .placeholder(R.drawable.inbox) // Ảnh mặc định nếu chưa có ảnh
                 .into(imgavatar); // ImageView hiển thị ảnh
@@ -60,14 +63,12 @@ public class ChitietDonvi extends AppCompatActivity {
             intent1.putExtra("donvi", donvi);
 
             startActivity(intent1);
+            finish();
 
 
         });
         btnxoa.setOnClickListener(view -> {
             if (helper.deleteDonvi(donvi.getId())) {
-                Intent intent1 = new Intent(ChitietDonvi.this, danhbadonvi.class);
-                intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent1);
                 finish();
             }
         });
@@ -90,6 +91,7 @@ public class ChitietDonvi extends AppCompatActivity {
 
 
     }
+
     private void Actionbar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

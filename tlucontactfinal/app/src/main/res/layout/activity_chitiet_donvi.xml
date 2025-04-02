@@ -98,7 +98,6 @@
             android:layout_height="150dp"
             android:layout_weight="1"
 
-            android:background="@drawable/khungbo"
             android:fillViewport="true"
             android:padding="16dp">
 

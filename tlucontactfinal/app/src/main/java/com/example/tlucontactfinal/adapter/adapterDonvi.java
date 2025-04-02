@@ -90,6 +90,8 @@ public class adapterDonvi extends RecyclerView.Adapter<adapterDonvi.ViewHolder>{
 
         public void bind(donvi donvi) {
             String avatarUri = donvi.getAvatar();
+            Uri imageUri = Uri.parse(avatarUri);
+
             if (avatarUri != null && !avatarUri.isEmpty()) {
                 Glide.with(imgavtar.getContext())
                         .load(Uri.parse(avatarUri)) // Chuyển String thành Uri
